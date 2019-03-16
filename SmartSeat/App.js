@@ -1,10 +1,10 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
-import Orientation from 'react-native-orientation';
 import IndevidamenteOcupada from './src/components/IndevidameteOcupada';
 import PassageiroAusente from './src/components/PassageiroAusente';
 import PoltronaNComprada from './src/components/PoltronaNComprada';
+import Bolinha from './src/components/Bolinha';
 
 
 export default class App extends Component {
@@ -32,7 +32,9 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.bus}></View>
+        <View style={styles.bus}> 
+          <Bolinha></Bolinha>
+           </View>
         <View style={styles.legenda}>
           <Text style={styles.text}>Legenda:</Text>
           <IndevidamenteOcupada></IndevidamenteOcupada>
@@ -46,7 +48,7 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  container: { //<View style={[styles.whiteViewLegenda, {backgroundColor: this.state.color}]}></View>
+  container: { 
     flex: 1,
     flexDirection: 'column',
     backgroundColor: '#fff',
