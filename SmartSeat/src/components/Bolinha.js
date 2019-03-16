@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import { NONAME } from 'dns';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 class Bolinha extends Component{
     
@@ -33,7 +33,7 @@ class Bolinha extends Component{
     renderBall(){
         return this.color.map((item) => {
             return (
-                <View style={[styles.assento, {backgroundColor: item.value}]}><Text>{item.key}</Text></View>
+                <View style={[styles.assento, {backgroundColor: item.value}]}><Text style={styles.txt}>{item.key}</Text></View>
 
             );
         });
@@ -59,13 +59,11 @@ class Bolinha extends Component{
             
             // </View>
             
-            <View>{this.renderBall()}</View>
+            <View style={{flexDirection: 'row'}}>{this.renderBall()}</View>
 
          
         );
     }
-
-    
 }
 
 const styles = StyleSheet.create({
@@ -73,10 +71,14 @@ const styles = StyleSheet.create({
     assento: {
         marginLeft: '2.5%',
         marginTop: '0.5%',
-        width: 40,
-        height: 40,
-        borderRadius: 1000,
-        
+        width: wp('6%'),
+        height: hp('10%'),
+        borderRadius: 1000
       },
+      txt:{
+        color: '#000',
+        fontSize: 20,
+        textAlign: 'center'
+      }
 });
 export default Bolinha;
