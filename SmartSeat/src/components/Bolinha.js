@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
-
+import {Platform, StyleSheet, Text, View} from 'react-native';
+import { NONAME } from 'dns';
 
 class Bolinha extends Component{
-
-    state = {
-        color: [
+    
+    // state = [
+        color=[
             {
             value:'blue',
             key:1
@@ -23,14 +24,16 @@ class Bolinha extends Component{
         {   
             value:'gray',
             key:5
-        }]
+        }
+    ];
 
-      };
+    // ];
     
+      
     renderBall(){
-        return state.map((item) => {
+        return this.color.map((item) => {
             return (
-                <View style={[styles.assento, {backgroundColor: this.item.color}]}>{item.key}</View>
+                <View style={[styles.assento, {backgroundColor: item.value}]}><Text>{item.key}</Text></View>
 
             );
         });
@@ -73,6 +76,7 @@ const styles = StyleSheet.create({
         width: 40,
         height: 40,
         borderRadius: 1000,
+        
       },
 });
 export default Bolinha;
