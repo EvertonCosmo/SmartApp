@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import {Platform, StyleSheet, Text, View} from 'react-native';
+import {Platform, StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
-class Bolinha extends Component{
-    
-    // state = [
-        color=[
+export default class Bolinha extends Component{
+
+
+        colors=[
             {
             value:'blue',
             
@@ -26,7 +26,7 @@ class Bolinha extends Component{
             
         },
         {
-            value:'white'
+            value:'white',
         },
         {
             value:'orange'
@@ -36,59 +36,91 @@ class Bolinha extends Component{
         }
     ];
 
-
+ //mudaCor = () => {
+//     color = this.gera_cor()
+//     this.setState({color: color})
+//   }
     // ];
     
-      
-    renderBall(){
-        return this.color.map((item,prop) => {
-            return (
-                <View style={[styles.assento, {backgroundColor: item.value}]}><Text style={styles.txt}>{item.key}</Text></View>
+    selected(object){
+        // this.setState({backgroundColor:'yellow'})
+        object.value = 'yellow';
+        
+    }
 
-            );
-        });
+    renderItem(array){
+        
+        if(array.length > 5){ 
+            return array.map((item,prop) => {
+                return (
+                    // <TouchableOpacity> 
+                         <View key={prop} style={[styles.seat, {backgroundColor: item.value}]}><Text style={styles.txt}>{prop}</Text></View>
+                    //  </TouchableOpacity>
+                );
+            });
+        }else if(array.length <=3){
+            return array.map((item,prop) => {
+
+                return (
+                    
+                    <View key={prop} style={[styles. seatSubtitle,{backgroundColor:'red', marginRight:90}]}>
+                             {/* <Text style={{fontSize:hp(5),textAlign:'right', color:'white'}}>{item.title}</Text> */}
+                    </View>
+
+                );
+            });
+        }
 
     }
 
 
     render(){
         return(
-           
-            // <View>
-            //   {state.map((prop, key) => {
-            //      return (
-                    
-            //         //  <View style={[styles.assento, {backgroundColor: this.state.color}]}></View>
-            //         //  <Button style={{borderColor: prop[0]}}  key={key}>{prop[1]}</Button>
-                     
-            //     );
-            //  })}
-            
-            
-            
-            
-            // </View>
-            
-            <View style={{flexDirection: 'row'}}>{this.renderBall()}</View>
-
+      
+         <View style={{flexDirection: 'row', padding:6,}}>{this.renderItem(this.colors)}
+                
+         </View>
+ 
+       
          
         );
     }
 }
 
 const styles = StyleSheet.create({
-   
-    assento: {
-        marginLeft: '2.5%',
+
+    seat: {
+        marginLeft: '2%',
         marginTop: '0.5%',
-        width: wp('6%'),
-        height: hp('10%'),
-        borderRadius: 1000
+        width: wp('10%'),
+        height: hp('20%'),
+        borderRadius: 1000,
+    
+      },
+      seatSubtitle: {
+        marginLeft: '2%',
+        marginTop: '0.5%',
+        width: wp('10%'),
+        height: hp('20%'),
+        borderRadius:1000
+    
       },
       txt:{
         color: '#000',
         fontSize: 20,
-        textAlign: 'center'
+        textAlign: 'center',
+        padding:26
+      },
+
+    //   Items
+
+    textSubtitle:{
+        fontSize: 22,
+        color: '#fff',
+        marginHorizontal: '2.5%',
+        marginVertical: '2.5%',
+        padding: 1
       }
+
+
 });
-export default Bolinha;
