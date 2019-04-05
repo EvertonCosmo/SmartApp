@@ -3,8 +3,6 @@ import {Platform, StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default class Bolinha extends Component{
-
-
         colors=[
             {
             value:'blue',
