@@ -6,6 +6,7 @@ import PassageiroAusente from './src/components/PassageiroAusente';
 import PoltronaNComprada from './src/components/PoltronaNComprada';
 import Bolinha from './src/components/Bolinha';
 import ItemsSubtitle from './src/components/ItemsSubtitle';
+import Retangulo from './src/components/Retangulo';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 
@@ -35,17 +36,15 @@ export default class App extends Component {
   render() {
     return (
     
-        <View style={styles.bus}> 
-            <Bolinha></Bolinha>
-            <Bolinha></Bolinha>
-          
-            <View style={styles.container}>
-              {/* <ItemsSubtitle></ItemsSubtitle> */}
+        <View style={styles.bus}>
+        <Retangulo></Retangulo>
+        <Bolinha></Bolinha>
+            {/*<View style={styles.container}>
               <IndevidamenteOcupada></IndevidamenteOcupada>
               <PassageiroAusente></PassageiroAusente>
               <PoltronaNComprada></PoltronaNComprada>
               
-            </View>
+    </View>*/}
          </View>
     );
   }
