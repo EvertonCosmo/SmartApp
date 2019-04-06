@@ -7,9 +7,8 @@ export default class Retangulo extends Component{
     render(){
         return(
             <View style={styles.retangulo}>
-                <View style={styles.circle}>
-                    <Bolinha></Bolinha>
-                </View>
+                <View style={styles.circle}></View>
+                <View style={styles.circle2}></View>
             </View>
             );
     }
@@ -26,20 +25,19 @@ const styles = StyleSheet.create({
       circle: {
         flexDirection: 'row',
         marginLeft: '45%',
-        width: wp('45%'),
+        width: wp('40%'),
         height: hp('40%'),
         backgroundColor: '#21325b',
         borderRadius: 1000
       },
-      circle2:{
+      circle2: {
+        backgroundColor: '#226699',
         flexDirection: 'row',
-        marginLeft: '45%',
-        width: wp('5%'),
-        height: hp('10%'),
-        backgroundColor: 'red',
+        width: wp('3%'),
+        height: hp('5%'),
+        marginLeft: '-2.5%',
+        marginTop: '-45%',
         borderRadius: 1000
       }
-
-
 
 });
