@@ -7,7 +7,7 @@ import PoltronaNComprada from './src/components/PoltronaNComprada';
 import Bolinha from './src/components/Bolinha';
 import ItemsSubtitle from './src/components/ItemsSubtitle';
 import Retangulo from './src/components/Retangulo';
-import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
+import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
 
 
 
@@ -32,11 +32,33 @@ export default class App extends Component {
 //     color = this.gera_cor()
 //     this.setState({color: color})
 //   }
+  componentWillMount() {
+   const SerialPort = require('serialport');
+
+   const Readline = require('@serialport/parser-readline');
+
+    const port = new SerialPort('/dev/ttyUSB1', { baudRate: 9600, })
+
+    const parser = port.pipe(new Readline({ delimiter: '\n' }));
+
+
+    port.on("open", () => {
+      console.log('serial port open');
+    });
+
+    parser.on('data', data => {
+      console.log('got word from arduino:', data);
+
+    });
+
+  }
+ 
 
   render() {
     return (
     
         <View style={styles.bus}>
+      
         <Retangulo></Retangulo>
         <Bolinha></Bolinha>
             {/*<View style={styles.container}>
