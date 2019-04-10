@@ -38,7 +38,6 @@ export default class App extends Component {
     
         <View style={styles.bus}>
         <Retangulo></Retangulo>
-        <Bolinha></Bolinha>
             {/*<View style={styles.container}>
               <IndevidamenteOcupada></IndevidamenteOcupada>
               <PassageiroAusente></PassageiroAusente>
