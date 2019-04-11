@@ -7,8 +7,15 @@ export default class Retangulo extends Component{
     render(){
         return(
             <View style={styles.retangulo}>
+
+
+
                 <View style={styles.circle}></View>
-                <View style={styles.circle2}></View>
+                                            
+               <View style={styles.circle2}></View>
+
+          
+
             </View>
             );
     }

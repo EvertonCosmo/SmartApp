@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import IndevidamenteOcupada from './src/components/IndevidameteOcupada';
@@ -8,10 +7,15 @@ import Bolinha from './src/components/Bolinha';
 import ItemsSubtitle from './src/components/ItemsSubtitle';
 import Retangulo from './src/components/Retangulo';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen'
-
+import {Socket as io} from 'socket.io'
+import SocketIOClient from 'socket.io-client'
+// import {Socket as io} from 'socket.io'
+// import { environment } from '../config/environment';
 
 
 export default class App extends Component {
+
+  
   // state = {
   //   color: 'red'
   // };
@@ -32,41 +36,64 @@ export default class App extends Component {
 //     color = this.gera_cor()
 //     this.setState({color: color})
 //   }
-  componentWillMount() {
-   const SerialPort = require('serialport');
-
-   const Readline = require('@serialport/parser-readline');
-
-    const port = new SerialPort('/dev/ttyUSB1', { baudRate: 9600, })
-
-    const parser = port.pipe(new Readline({ delimiter: '\n' }));
 
 
-    port.on("open", () => {
-      console.log('serial port open');
-    });
-
-    parser.on('data', data => {
-      console.log('got word from arduino:', data);
-
-    });
-
-  }
  
 
+
+constructor(){
+  // super(props)
+super()
+
+  state = {
+    value:'',
+  }
+
+}
+
+
+  componentDidMount(){
+    var socket = io.connect('http://localhost:3000'); //connect to server
+
+    // this.socket = SocketIOClient('http://localhost:3000');
+
+    this.socket.on('data', (data) => {
+        console.log(data);
+
+    });
+      
+      
+      // document.getElementById('data').innerHTML = data;
+    
+
+
+    // fetch('http://192.168.1.8:30001/api/')
+    //   .then((response) => response.json())
+    //   .then((responseJson) => {
+    //     this.setState({ value: responseJson });
+    //   })
+    //   .catch((error) => {
+    //     console.error(error);
+    //   });
+  }
+ 
+  
   render() {
+
+   
     return (
     
         <View style={styles.bus}>
-      
-        <Retangulo></Retangulo>
+        
         <Bolinha></Bolinha>
-            {/*<View style={styles.container}>
-              <IndevidamenteOcupada></IndevidamenteOcupada>
-              <PassageiroAusente></PassageiroAusente>
-              <PoltronaNComprada></PoltronaNComprada>
+        {/* <Bolinha></Bolinha>  */}
+       
+         {/* <View style={styles.container}> */}
+               {/* <IndevidamenteOcupada></IndevidamenteOcupada> */}
+                              {/* <PassageiroAusente></PassageiroAusente> */}
+                                    {/* <PoltronaNComprada></PoltronaNComprada> */}
               
-    </View>*/}
+        {/* </View> */}
          </View>
     );
   }
@@ -74,6 +101,7 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
+
   container: { 
     flex: 1,
     // flexDirection: 'row',

@@ -3,7 +3,7 @@ import {Platform, StyleSheet, Text, View,TouchableOpacity} from 'react-native';
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
 
 export default class Bolinha extends Component{
-        colors=[
+    colors=[
             {
             value:'blue',
             
@@ -51,9 +51,9 @@ export default class Bolinha extends Component{
         if(array.length > 5){ 
             return array.map((item,prop) => {
                 return (
-                    // <TouchableOpacity> 
+                    <TouchableOpacity> 
                          <View key={prop} style={[styles.seat, {backgroundColor: item.value}]}><Text style={styles.txt}>{prop}</Text></View>
-                    //  </TouchableOpacity>
+                     </TouchableOpacity>
                 );
             });
         }else if(array.length <=3){
@@ -75,7 +75,9 @@ export default class Bolinha extends Component{
     render(){
         return(
       
-         <View style={{flexDirection: 'row', padding:6,}}>{this.renderItem(this.colors)}
+         <View style={{flexDirection: 'row', padding:6,}}>
+         
+            {this.renderItem(this.colors)}
                 
          </View>
  
